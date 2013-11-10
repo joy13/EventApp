@@ -1,28 +1,16 @@
 package com.gatech.mas.eventconnect.activity;
 
-import java.net.URI;
 import java.util.ArrayList;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.gatech.mas.eventconnect.R;
 import com.gatech.mas.eventconnect.common.Event;
-import com.gatech.mas.eventconnect.common.EventAdapter;
+import com.gatech.mas.eventconnect.common.EventConnectConstants;
+import com.gatech.mas.eventconnect.common.GridMenuAdapter;
 
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -35,36 +23,62 @@ public class MainMenuActivity extends Activity {
 	//private final String apiLocation = "http://dev.m.gatech.edu/d/sbajaj9/w/eventconnect/c/api/newevents";
 	String sessionName;
 	String sessionId;
+	Intent intent;
 	ArrayList<Event> eventItems;
-	public final static String SESSION_NAME = "com.gatech.mas.eventconnect.activity.SESSION_NAME";
-	public final static String SESSION_ID = "com.gatech.mas.eventconnect.activity.SESSION_ID";
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 		GridView gridview = (GridView) findViewById(R.id.gridView);
-	    gridview.setAdapter(new EventAdapter(this));
-	    gridview.setOnItemClickListener(new OnItemClickListener() {
-	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-	            Toast.makeText(MainMenuActivity.this, "" + position, Toast.LENGTH_SHORT).show();
-	        }
-	    });
-		Intent intent = getIntent();
+	    gridview.setAdapter(new GridMenuAdapter(this));
+	    intent = getIntent();
 		// To get the action of the intent use
 		String action = intent.getAction();
 
 		if (!action.equals(Intent.ACTION_VIEW)) {
 			throw new RuntimeException("Should not happen");
 		}
+	    gridview.setOnItemClickListener(new OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+	            //Toast.makeText(MainMenuActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+	        	Intent sessionInfoIntent;
+	            Uri data = intent.getData();
+	    		sessionName = data.getQueryParameter("sessionName");
+	    		sessionId = data.getQueryParameter("sessionId");
+//	    		new FetchEventsTask().execute();
+	    		sessionInfoIntent = new Intent(getApplicationContext(), GetEventsActivity.class);
+	    		if(position == 1)
+	    		{
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.ALL_EVENTS);
+	    		}
+	    		else if(position == 2)
+	    		{
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.NEW_EVENTS);
+	    		}
+	    		else if(position == 3)
+	    		{
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.ALL_EVENTS);
+	    		}
+	    		else
+	    		{
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.ALL_EVENTS);
+	    		}
+	    		sessionInfoIntent.putExtra(EventConnectConstants.SESSION_NAME, sessionName);
+	    		sessionInfoIntent.putExtra(EventConnectConstants.SESSION_ID, sessionId);	
+	    		startActivity(sessionInfoIntent);
+	        }
+	    });
+		
 		// To get the data use
 		Uri data = intent.getData();
 		sessionName = data.getQueryParameter("sessionName");
 		sessionId = data.getQueryParameter("sessionId");
 //		new FetchEventsTask().execute();
-		Intent sessionInfoIntent = new Intent(this, GetAllEventsActivity.class);
-		sessionInfoIntent.putExtra(SESSION_NAME, sessionName);
-		sessionInfoIntent.putExtra(SESSION_ID, sessionId);		
+		Intent sessionInfoIntent = new Intent(this, GetEventsActivity.class);
+		sessionInfoIntent.putExtra(EventConnectConstants.SESSION_NAME, sessionName);
+		sessionInfoIntent.putExtra(EventConnectConstants.SESSION_ID, sessionId);		
 	}
 
 	@Override

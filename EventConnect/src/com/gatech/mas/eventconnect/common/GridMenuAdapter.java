@@ -9,27 +9,28 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-public class EventAdapter extends BaseAdapter {
+public class GridMenuAdapter extends BaseAdapter {
 
 	private Context mContext;
-	public EventAdapter() {
+	public GridMenuAdapter() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EventAdapter(Context c) {
+	public GridMenuAdapter(Context c) {
 		// TODO Auto-generated constructor stub
+		mContext = c;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return mThumbIds.length;
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return mThumbIds[position];
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class EventAdapter extends BaseAdapter {
         ImageView imageView;
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setLayoutParams(new GridView.LayoutParams(120, 120));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
         } else {
