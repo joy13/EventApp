@@ -16,5 +16,10 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="title_activity_get_all_events">GetEventsActivity</string>
-
+    <string name="create_event">Create Event</string>
+    <string name="title_event">Title of the event</string>
+    <string name="datetime_event">Date and time of the event</string>
+    <string name="submit_button">Submit</string>
+    <string name="selectDate">Select date</string>
+    <string name="selectTime">Select time</string>
 </resources>

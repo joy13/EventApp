@@ -25,6 +25,9 @@ import android.os.Message;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.app.ActionBar;
 import android.app.ListActivity;
 
 public class GetEventsActivity extends ListActivity {
@@ -39,8 +42,8 @@ public class GetEventsActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		intent = getIntent();
-		sessionId = intent.getExtras().getString(EventConnectConstants.SESSION_NAME);
-		sessionName = intent.getExtras().getString(EventConnectConstants.SESSION_ID);
+		sessionName = intent.getExtras().getString(EventConnectConstants.SESSION_NAME);
+		sessionId = intent.getExtras().getString(EventConnectConstants.SESSION_ID);
 		api = intent.getExtras().getString(EventConnectConstants.API);
 		if(api.equalsIgnoreCase(EventConnectConstants.ALL_EVENTS))
 		{
@@ -50,14 +53,48 @@ public class GetEventsActivity extends ListActivity {
 		{
 			apiLocation = EventConnectConstants.NEWEVENTS_APILOCATION;
 		} 
+		else if(api.equalsIgnoreCase(EventConnectConstants.MY_EVENTS))
+		{
+			
+			apiLocation = EventConnectConstants.MYEVENTS_APILOCATION;
+		} 
 		new FetchEventsTask().execute();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.get_all_events, menu);
-		return true;
+		api = intent.getExtras().getString(EventConnectConstants.API);
+		MenuInflater inflater = getMenuInflater();
+		if(api.equalsIgnoreCase(EventConnectConstants.MY_EVENTS))
+		{
+			inflater.inflate(R.menu.add_event, menu);
+			/*
+			menu.add(R.drawable.ic_new_event);
+			inflater.inflate(R.menu.get_all_events, menu);
+			*/
+			
+		} 
+		else {
+			inflater.inflate(R.menu.get_all_events, menu);
+		}
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_new_event:
+	        	
+	            Intent i = new Intent(getApplicationContext(), CreateEventActivity.class);
+	            i.putExtra(EventConnectConstants.SESSION_NAME, sessionName);
+	    		i.putExtra(EventConnectConstants.SESSION_ID, sessionId);
+	            startActivity(i);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
 	
 	public class FetchEventsTask extends AsyncTask<String, Integer, ArrayList<Event>> {

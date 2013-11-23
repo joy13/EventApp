@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport = "true"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TextViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_event"
+            android:textSize="10pt" >
+
+		</TextView>
+		<EditText
+		    android:id="@+id/EditTitle"
+		    android:layout_height="wrap_content"
+		    android:hint="@string/title_event"
+		    android:inputType="text"
+		    android:layout_width="fill_parent">
+		</EditText>
+
+				
+
+		<RelativeLayout 
+
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:onClick="selectDate" >
+
+		<EditText
+		    android:id="@+id/editText1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Select date"
+		    android:inputType="date" >
+		
+		</EditText>
+		    
+		<ImageButton
+		    android:id="@+id/imageButton1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/editText1"
+		    android:contentDescription="@string/selectDate"
+			android:layout_toRightOf="@+id/editText1"
+			
+			android:cropToPadding="true"
+			android:onClick="selectDate"
+			
+		    android:src="@drawable/ic_date" />
+		</RelativeLayout>
+
+		<RelativeLayout 
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:onClick="selectTime" >
+
+		<EditText
+		    android:id="@+id/editText2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Select time"
+		    android:inputType="time" >
+		
+		</EditText>
+		    
+		<ImageButton
+		    android:id="@+id/imageButton2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/editText2"
+		    android:contentDescription="@string/selectTime"
+			android:layout_toRightOf="@+id/editText2"
+			
+			android:cropToPadding="true"
+			android:onClick="selectTime"
+			
+		    android:src="@drawable/ic_time" />
+		</RelativeLayout>
+
+		<EditText
+		    android:id="@+id/locationText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type location" >
+
+		    <requestFocus />
+		</EditText>
+
+		<EditText
+		    android:id="@+id/roomText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type room" />
+
+		<EditText
+		    android:id="@+id/majorText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type major" />
+
+		<EditText
+		    android:id="@+id/descriptionText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type description" />
+
+        <Button
+		    android:id="@+id/ButtonSubmit"
+		    android:layout_height="wrap_content"
+		    android:text="@string/submit_button"
+		    android:onClick="submitEvent"
+		    android:layout_width="fill_parent">
+		</Button>
+		
+        
+        
+<!--Put form controls here-->
+    </LinearLayout>
+</ScrollView>

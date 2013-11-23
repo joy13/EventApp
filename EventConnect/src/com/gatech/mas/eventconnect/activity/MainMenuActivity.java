@@ -3,6 +3,7 @@ package com.gatech.mas.eventconnect.activity;
 import java.util.ArrayList;
 
 import com.gatech.mas.eventconnect.R;
+import com.gatech.mas.eventconnect.common.CustomAdapter;
 import com.gatech.mas.eventconnect.common.Event;
 import com.gatech.mas.eventconnect.common.EventConnectConstants;
 import com.gatech.mas.eventconnect.common.GridMenuAdapter;
@@ -32,7 +33,9 @@ public class MainMenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 		GridView gridview = (GridView) findViewById(R.id.gridView);
-	    gridview.setAdapter(new GridMenuAdapter(this));
+	    // gridview.setAdapter(new GridMenuAdapter(this));
+		gridview.setAdapter(new CustomAdapter(this, getData()));
+	 
 	    intent = getIntent();
 		// To get the action of the intent use
 		String action = intent.getAction();
@@ -49,21 +52,21 @@ public class MainMenuActivity extends Activity {
 	    		sessionId = data.getQueryParameter("sessionId");
 //	    		new FetchEventsTask().execute();
 	    		sessionInfoIntent = new Intent(getApplicationContext(), GetEventsActivity.class);
-	    		if(position == 1)
+	    		if(position == 0)
 	    		{
 	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.ALL_EVENTS);
 	    		}
-	    		else if(position == 2)
+	    		else if(position == 1)
 	    		{
 	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.NEW_EVENTS);
 	    		}
+	    		else if(position == 2)
+	    		{
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.MY_EVENTS);
+	    		}
 	    		else if(position == 3)
 	    		{
-	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.ALL_EVENTS);
-	    		}
-	    		else
-	    		{
-	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.ALL_EVENTS);
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.MY_EVENTS);
 	    		}
 	    		sessionInfoIntent.putExtra(EventConnectConstants.SESSION_NAME, sessionName);
 	    		sessionInfoIntent.putExtra(EventConnectConstants.SESSION_ID, sessionId);	
@@ -87,5 +90,18 @@ public class MainMenuActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
+	
+	public ArrayList<Integer> getData(){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(R.drawable.allevents);
+        // add 2 - 11
+        list.add(R.drawable.newevents);
+        
+        list.add(R.drawable.recommended);
+        
+        list.add(R.drawable.myevents);
+
+        return list;
+    }
 	
 }

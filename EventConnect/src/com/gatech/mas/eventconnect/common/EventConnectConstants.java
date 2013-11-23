@@ -13,4 +13,5 @@ public class EventConnectConstants {
 	public final static String ALLEVENTS_APILOCATION = "http://dev.m.gatech.edu/d/sbajaj9/w/eventconnect/c/api/allevents";
 	public final static String NEWEVENTS_APILOCATION = "http://dev.m.gatech.edu/d/sbajaj9/w/eventconnect/c/api/newevents";
 	public final static String RECOMMENDEDEVENTS_APILOCATION = "http://dev.m.gatech.edu/d/sbajaj9/w/eventconnect/c/api/newevents";
+	public final static String MYEVENTS_APILOCATION = "http://dev.m.gatech.edu/d/sbajaj9/w/eventconnect/c/api/myevents";
 }

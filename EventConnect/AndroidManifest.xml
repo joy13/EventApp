@@ -7,10 +7,11 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:debuggable="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -39,8 +40,14 @@
             android:name="com.gatech.mas.eventconnect.activity.GetEventsActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.gatech.mas.eventconnect.activity.CreateEventActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.gatech.mas.eventconnect.activity.GetEventsActivity">
+        </activity>
+        
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    
 
 </manifest>
