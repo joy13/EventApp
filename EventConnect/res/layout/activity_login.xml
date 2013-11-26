@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="85dp"
         android:text="@string/btn_login" 
     	android:onClick="navigateToGtLogin" />
 
@@ -25,6 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
+        android:textSize="20sp"
         android:text="@string/login_txt" />
 
 </RelativeLayout>

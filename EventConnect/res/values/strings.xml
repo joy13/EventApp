@@ -2,19 +2,28 @@
 <resources>
 
     <string name="app_name">Event Connect</string>
+    <string name="new_event">New Events</string>
+    <string name="my_event">My Events!</string>
+    <string name="all_event">All Events</string>
     <string name="action_settings">Settings</string>
     <string name="title_recommended">Recommended</string>
     <string name="title_favourite">Favourites</string>
     <string name="title_new">New</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="login_txt">Login to Event Connect!</string>
-    <string name="btn_login">Login</string>
+    <string name="login_txt">Login to Event Connect</string>
+    <string name="btn_login">Go!</string>
     <string name="title_activity_get_events">GetEventsActivity</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="title_activity_get_all_events">GetEventsActivity</string>
-
+    <string name="create_event">Create Event</string>
+    <string name="title_event">Title of the event</string>
+    <string name="datetime_event">Date and time of the event</string>
+    <string name="submit_button">Submit</string>
+    <string name="selectDate">Select date</string>
+    <string name="selectTime">Select time</string>
+    <string name="search_txt">Search Events...</string>
 </resources>
