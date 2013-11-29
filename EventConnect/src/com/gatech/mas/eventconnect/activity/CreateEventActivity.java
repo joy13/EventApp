@@ -1,6 +1,7 @@
 package com.gatech.mas.eventconnect.activity;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,7 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -17,6 +20,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.apache.http.util.EntityUtils;
+
+
+
 
 import com.gatech.mas.eventconnect.R;
 import com.gatech.mas.eventconnect.common.EventConnectConstants;
@@ -169,7 +176,7 @@ public class CreateEventActivity extends FragmentActivity {
     		EditText roomText = (EditText) findViewById(R.id.roomText);
     		EditText descriptionText = (EditText) findViewById(R.id.descriptionText);
     		final String title = titleField.getText().toString();
-    		final String datetime = Integer.toString(year) + "-" + Integer.toString(month) + "/" + Integer.toString(day) + "/"  + " " + Integer.toString(hour) + ":" + Integer.toString(min) + " PM";
+    		final String datetime = Integer.toString(year) + "-" + Integer.toString(month) + "-" + Integer.toString(day) + "T"  + Integer.toString(hour) + ":" + Integer.toString(min);
     		final String location = locationText.getText().toString();
     		final String room = roomText.getText().toString();
     		final String major = majorField.getText().toString();
@@ -189,25 +196,44 @@ public class CreateEventActivity extends FragmentActivity {
     		jsonMap.put("location", room);
     		jsonMap.put("major", major);
     		jsonMap.put("building_id", "168");
+    		jsonMap.put("event_time", datetime);
     		
     		JSONObject holder = new JSONObject(jsonMap);
 
  
-            // getting JSON Object
-            // Note that create product url accepts POST method
+
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost(url);
+            String urlPost = url + "/post";
+            HttpPost httpPost = new HttpPost(urlPost);
             Intent i = getIntent();
             String sessionName = i.getExtras().getString(EventConnectConstants.SESSION_NAME);
             String sessionId = i.getExtras().getString(EventConnectConstants.SESSION_ID);
             httpPost.setHeader("Cookie", sessionName + "=" + sessionId);
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
+            // httpPost.setHeader("Accept", "application/json");
+            // httpPost.setHeader("Content-type", "application/json");
             try {
+            	// Add your data
+            	
+            	
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                nameValuePairs.add(new BasicNameValuePair("title", title));
+                nameValuePairs.add(new BasicNameValuePair("body", description));
+                nameValuePairs.add(new BasicNameValuePair("location", room));
+                nameValuePairs.add(new BasicNameValuePair("major", major));
+                nameValuePairs.add(new BasicNameValuePair("building_id", "168"));
+                nameValuePairs.add(new BasicNameValuePair("event_time", datetime));
+                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                
+                /*
             	StringEntity se = new StringEntity(holder.toString());
 				httpPost.setEntity(se);
+				*/
+                
+                
 				HttpResponse httpResponse = httpClient.execute(httpPost);
-				Log.e("HTTP Response", httpResponse.toString());
+				HttpEntity entity = httpResponse.getEntity();
+				String content = EntityUtils.toString(entity, EntityUtils.getContentCharSet(entity));
+				Log.e("HTTP Response", content);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

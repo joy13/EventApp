@@ -4,9 +4,9 @@
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport = "true"
-    android:scrollbars="vertical">
+    android:scrollbars="vertical"> 
     <LinearLayout
+   
         android:layout_width="fill_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
@@ -15,16 +15,20 @@
             android:id="@+id/TextViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="14dp"
             android:text="@string/create_event"
             android:textSize="10pt" >
 
 		</TextView>
+
 		<EditText
 		    android:id="@+id/EditTitle"
+		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:hint="@string/title_event"
 		    android:inputType="text"
-		    android:layout_width="fill_parent">
+		    android:padding="11dp" >
+
 		</EditText>
 
 				
@@ -32,7 +36,7 @@
 		<RelativeLayout 
 
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			android:onClick="selectDate" >
 
 		<EditText
@@ -41,7 +45,8 @@
 		    android:layout_height="wrap_content"
 		    android:ems="10"
 		    android:hint="Select date"
-		    android:inputType="date" >
+		    android:inputType="date"
+		    android:padding="11dp" >
 		
 		</EditText>
 		    
@@ -50,18 +55,18 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_alignBottom="@+id/editText1"
+		    android:layout_toRightOf="@+id/editText1"
 		    android:contentDescription="@string/selectDate"
-			android:layout_toRightOf="@+id/editText1"
-			
-			android:cropToPadding="true"
-			android:onClick="selectDate"
-			
+		    android:cropToPadding="true"
+		    android:onClick="selectDate"
+		    android:padding="11dp"
 		    android:src="@drawable/ic_date" />
+
 		</RelativeLayout>
 
 		<RelativeLayout 
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			android:onClick="selectTime" >
 
 		<EditText
@@ -70,7 +75,8 @@
 		    android:layout_height="wrap_content"
 		    android:ems="10"
 		    android:hint="Select time"
-		    android:inputType="time" >
+		    android:inputType="time"
+		    android:padding="11dp" >
 		
 		</EditText>
 		    
@@ -79,13 +85,13 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_alignBottom="@+id/editText2"
+		    android:layout_toRightOf="@+id/editText2"
 		    android:contentDescription="@string/selectTime"
-			android:layout_toRightOf="@+id/editText2"
-			
-			android:cropToPadding="true"
-			android:onClick="selectTime"
-			
+		    android:cropToPadding="true"
+		    android:onClick="selectTime"
+		    android:padding="11dp"
 		    android:src="@drawable/ic_time" />
+
 		</RelativeLayout>
 
 		<EditText
@@ -93,7 +99,8 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:ems="10"
-		    android:hint="Type location" >
+		    android:hint="Type location"
+		    android:padding="11dp" >
 
 		    <requestFocus />
 		</EditText>
@@ -103,32 +110,38 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:ems="10"
-		    android:hint="Type room" />
+		    android:hint="Type room"
+		    android:padding="11dp" />
 
 		<EditText
 		    android:id="@+id/majorText"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:ems="10"
-		    android:hint="Type major" />
+		    android:hint="Type major"
+		    android:padding="11dp" />
 
 		<EditText
 		    android:id="@+id/descriptionText"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:ems="10"
-		    android:hint="Type description" />
+		    android:hint="Type description"
+		    android:padding="11dp" />
 
         <Button
-		    android:id="@+id/ButtonSubmit"
-		    android:layout_height="wrap_content"
-		    android:text="@string/submit_button"
-		    android:onClick="submitEvent"
-		    android:layout_width="fill_parent">
+            android:id="@+id/ButtonSubmit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="submitEvent"
+            android:padding="14dp"
+            android:text="@string/submit_button" >
+
 		</Button>
 		
         
         
 <!--Put form controls here-->
     </LinearLayout>
-</ScrollView>
+    
+</ScrollView>  
