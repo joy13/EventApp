@@ -62,7 +62,7 @@ public class MainMenuActivity extends Activity {
 	    		}
 	    		else if(position == 2)
 	    		{
-	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.MY_EVENTS);
+	    			sessionInfoIntent.putExtra(EventConnectConstants.API, EventConnectConstants.RECOMMENDED_EVENTS);
 	    		}
 	    		else if(position == 3)
 	    		{
