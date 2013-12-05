@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="14dp"
-            android:text="@string/create_event"
+            android:text="@string/update_event"
             android:textSize="10pt" >
 
 		</TextView>
@@ -27,7 +27,7 @@
             android:id="@+id/ButtonSubmit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="submitEvent"
+            android:onClick="updateEvent"
             android:padding="14dp"
             android:text="@string/submit_button" >
 

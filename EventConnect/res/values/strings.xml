@@ -17,6 +17,7 @@
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="title_activity_get_all_events">GetEventsActivity</string>
     <string name="create_event">Create Event</string>
+    <string name="update_event">Update Event</string>
     <string name="title_event">Title of the event</string>
     <string name="datetime_event">Date and time of the event</string>
     <string name="submit_button">Submit</string>

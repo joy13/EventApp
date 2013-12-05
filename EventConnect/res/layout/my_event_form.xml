@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout 
+    	android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+		<EditText
+		    android:id="@+id/EditTitle"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:hint="@string/title_event"
+		    android:inputType="text"
+		    android:padding="11dp" >
+
+		</EditText>
+
+				
+
+		<RelativeLayout 
+
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="selectDate" >
+
+		<EditText
+		    android:id="@+id/editText1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Select date"
+		    android:inputType="date"
+		    android:padding="11dp" >
+		
+		</EditText>
+		    
+		<ImageButton
+		    android:id="@+id/imageButton1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/editText1"
+		    android:layout_toRightOf="@+id/editText1"
+		    android:contentDescription="@string/selectDate"
+		    android:cropToPadding="true"
+		    android:onClick="selectDate"
+		    android:padding="11dp"
+		    android:src="@drawable/ic_date" />
+
+		</RelativeLayout>
+
+		<RelativeLayout 
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="selectTime" >
+
+		<EditText
+		    android:id="@+id/editText2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Select time"
+		    android:inputType="time"
+		    android:padding="11dp" >
+		
+		</EditText>
+		    
+		<ImageButton
+		    android:id="@+id/imageButton2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/editText2"
+		    android:layout_toRightOf="@+id/editText2"
+		    android:contentDescription="@string/selectTime"
+		    android:cropToPadding="true"
+		    android:onClick="selectTime"
+		    android:padding="11dp"
+		    android:src="@drawable/ic_time" />
+
+		</RelativeLayout>
+
+		<EditText
+		    android:id="@+id/locationText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type location"
+		    android:padding="11dp" >
+
+		    <requestFocus />
+		</EditText>
+
+		<EditText
+		    android:id="@+id/roomText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type room"
+		    android:padding="11dp" />
+
+		<EditText
+		    android:id="@+id/majorText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type major"
+		    android:padding="11dp" />
+
+		<EditText
+		    android:id="@+id/descriptionText"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Type description"
+		    android:padding="11dp" />
+	</LinearLayout>
+</merge>
